@@ -1,0 +1,21 @@
+<%= form_for([@restaurant, @review]) do |f| %>
+  <% if @review.errors.any? %>
+    <div class="alert alert-danger">
+      <p><b><%= @review.errors.count %>件のエラーがあります</b></p>
+
+      <ul>
+      <% @review.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :body, "レビュー" %>
+    <%= f.text_field :body, class: "form-control" %>
+  </div>
+
+  <%= f.submit '登録する', class: "btn btn-primary" %>
+
+<% end %>
