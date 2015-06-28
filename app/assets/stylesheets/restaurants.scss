@@ -1,3 +1,73 @@
 // Place all the styles related to the restaurants controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.btn-product{
+  width: 100%;
+}
+
+/* Content */
+.content {
+    padding-top: 30px;
+}
+
+/* Testimonials */
+.testimonials blockquote {
+    background: #f8f8f8 none repeat scroll 0 0;
+    border: medium none;
+    color: #666;
+    display: block;
+    font-size: 14px;
+    line-height: 20px;
+    padding: 15px;
+    position: relative;
+}
+.testimonials blockquote::before {
+    border-left: 0 inset rgba(0, 0, 0, 0);
+    border-right: 22px inset rgba(0, 0, 0, 0);
+    border-top: 22px solid #f8f8f8;
+    bottom: -20px;
+    content: " ";
+    display: block;
+    height: 0;
+    left: 70px;
+    position: absolute;
+    width: 0;
+}
+.testimonials blockquote::after {
+    background: #e6400c url("http://keenthemes.com/assets/bootsnipp/blockquote-corner.png") no-repeat scroll 0 0;
+    bottom: 0;
+    content: " ";
+    display: block !important;
+    height: 13px;
+    position: absolute;
+    right: 0;
+    width: 13px;
+    z-index: 23;
+}
+.testimonials .carousel-info img {
+    border: 1px solid #f5f5f5;
+    border-radius: 150px !important;
+    height: 75px;
+    padding: 3px;
+    width: 75px;
+}
+.testimonials .carousel-info {
+    overflow: hidden;
+}
+.testimonials .carousel-info img {
+    margin-right: 15px;
+}
+.testimonials .carousel-info span {
+    display: block;
+}
+.testimonials span.testimonials-name {
+    color: #e6400c;
+    font-size: 16px;
+    font-weight: 300;
+    margin: 23px 0 7px;
+}
+.testimonials span.testimonials-post {
+    color: #656565;
+    font-size: 12px;
+}
