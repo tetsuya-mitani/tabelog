@@ -1,42 +1,63 @@
-<p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="col-lg-12">
+    <h1>レストラン情報</h1>
+    <dl>
+      <dt>名前</dt>
+      <dd>
+        <%= @restaurant.name %>
+      </dd>
+      <dt>電話番号</dt>
+      <dd>
+        <%= @restaurant.telephone %>
+      </dd>
+      <dt>住所</dt>
+      <dd>
+        <%= @restaurant.address %>
+      </dd>
+      <dt>ホームページ</dt>
+      <dd>
+        <%= @restaurant.home_page %>
+      </dd>
+      <dt>平均点</dt>
+      <dd>
+        <%= @average %>
+      </dd>
+    <%= link_to '編集する', edit_restaurant_path(@restaurant.id), class: "btn btn-default" %>
+    <%= link_to '削除する', restaurant_path(@restaurant.id), method: :delete, class: "btn btn-danger" %>
+  </div>
+</div>
 
-<p>
-  <strong>Name:</strong>
-  <%= @restaurant.name %>
-</p>
+<hr>
 
-<p>
-  <strong>Telephone:</strong>
-  <%= @restaurant.telephone %>
-</p>
+<div class="row">
+  <div class="col-lg-12">
+  <h2>レビュー一覧</h2>
+    <% @restaurant.reviews.each do |review| %>
+      <div class="media">
+        <div class="media-body">
+          <p>点数：<%= review.point %>点</p>
+          <p><%= simple_format(review.body) %></p>
+          <p class="text-muted">
+            by <%= review.user.name %>さん
+            &nbsp;
+            <%= review.created_at.strftime('%Y/%m/%d %H:%M') %>
+            &nbsp;
+            &nbsp;
+            <%= link_to '編集する', edit_restaurant_review_path(@restaurant, review), class: "btn btn-danger" %>
+            <%= link_to '削除する', restaurant_review_path(@restaurant, review), method: :delete, class: "btn btn-danger" %>
+          </p>
+        </div>
+      </div>
+      <hr>
+    <% end %>
+  </div>
+</div>
 
-<p>
-  <strong>Address:</strong>
-  <%= @restaurant.address %>
-</p>
-
-<p>
-  <strong>Home page:</strong>
-  <%= @restaurant.home_page %>
-</p>
+<%= link_to 'レビューを書く', new_restaurant_review_path(@restaurant), class: "btn-default"%>
 
 <%= link_to '編集', edit_restaurant_path(@restaurant) %> |
 <%= link_to '戻る', restaurants_path %>
 
-<%= link_to 'レビューを書く', new_restaurant_review_path(@restaurant) %> |
 
-    <hr>
 
-    <h2>レビュー一覧</h2>
-    <% @restaurant.reviews.each do |review| %>
-      <p>
-        <%= review.body %> <br>
-        by <%= review.user.email %>
-      </p>
-    <% end %>
-    <hr>
-    <h2>レビューを残したユーザー一覧</h2>
-    <%# throughオプションのおかげで、BookはReviewを介してUserにアクセスできる  %>
-    <% @restaurant.users.each do |user| %>
-      <p><%= user.email %></p>
-    <% end %>
+

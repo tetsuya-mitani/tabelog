@@ -1,5 +1,6 @@
 class RestaurantsController < ApplicationController
   before_action :set_restaurant, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
 
   # GET /restaurants
   # GET /restaurants.json
@@ -10,6 +11,14 @@ class RestaurantsController < ApplicationController
   # GET /restaurants/1
   # GET /restaurants/1.json
   def show
+    @num = 0
+    @sum = 0
+    # @restaurant = Restaurant.find(params[:id])
+    @restaurant.reviews.each do |review|
+      @sum += review.point
+      @num += 1
+    end
+    @average = @sum.to_f/@num
   end
 
   # GET /restaurants/new
@@ -69,6 +78,6 @@ class RestaurantsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def restaurant_params
-      params.require(:restaurant).permit(:name, :telephone, :address, :home_page)
+      params.require(:restaurant).permit(:name, :telephone, :address, :home_page, :image)
     end
 end

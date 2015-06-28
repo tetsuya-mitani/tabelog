@@ -16,6 +16,11 @@
     <%= f.text_field :body, class: "form-control" %>
   </div>
 
+  <div class="form-group">
+    <%= f.label :point, "点数" %>
+    <%= f.number_field :point, class: "form-control" %>
+  </div>
+
   <%= f.submit '登録する', class: "btn btn-primary" %>
 
 <% end %>

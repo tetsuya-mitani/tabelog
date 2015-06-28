@@ -1,7 +1,7 @@
 <%= form_for(@restaurant) do |f| %>
   <% if @restaurant.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@restaurant.errors.count, "error") %> prohibited this restaurant from being saved:</h2>
+    <div class="alert alert-danger">
+      <p><b><%= @restaurant.errors.count %>件のエラーがあります</b></p>
 
       <ul>
       <% @restaurant.errors.full_messages.each do |message| %>
@@ -11,23 +11,31 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+  <div class="form-group">
+  <%= f.label :name, "名前" %>
+  <%= f.text_field :name, class: "form-control" %>
   </div>
-  <div class="field">
-    <%= f.label :telephone %><br>
-    <%= f.text_field :telephone %>
+
+  <div class="form-group">
+  <%= f.label :telephone, "電話番号" %>
+  <%= f.text_field :telephone, class: "form-control" %>
   </div>
-  <div class="field">
-    <%= f.label :address %><br>
-    <%= f.text_field :address %>
+
+  <div class="form-group">
+  <%= f.label :address, "住所" %>
+  <%= f.text_field :address, class: "form-control" %>
   </div>
-  <div class="field">
-    <%= f.label :home_page %><br>
-    <%= f.text_field :home_page %>
+
+  <div class="form-group">
+  <%= f.label :home_page, "ホームページ" %>
+  <%= f.text_field :home_page, class: "form-control" %>
   </div>
-  <div class="actions">
-    <%= f.submit %>
+
+  <div class="form-group">
+  <%= f.label :image, "画像" %>
+  <%= f.text_field :image, class: "form-control" %>
   </div>
+
+  <%= f.submit '編集する', class: "btn btn-primary" %>
+
 <% end %>
