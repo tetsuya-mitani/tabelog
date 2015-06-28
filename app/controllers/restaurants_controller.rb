@@ -6,6 +6,23 @@ class RestaurantsController < ApplicationController
   # GET /restaurants.json
   def index
     @restaurants = Restaurant.all
+
+    @max = 0
+    @max_restaurant
+    @restaurants.each do |restaurant|
+      num = 0
+      sum = 0
+      restaurant.reviews.each do |review|
+        sum += review.point
+        num += 1
+      end
+      average = sum.to_f/num
+
+      if average >= @max
+        @max = average
+        @max_restaurant = restaurant
+      end
+    end
   end
 
   # GET /restaurants/1

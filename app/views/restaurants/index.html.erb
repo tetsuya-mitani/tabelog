@@ -31,16 +31,30 @@
 
 <hr>
 
-<div class = "col-md-4">
-  <p>最近登録されたお店</p>
-  <% index = 0 %>
-  <% @restaurants.reverse_each do |restaurant| %>
-    <%# ６個目以上の記事の場合はBreak（each文をその場で終わらせる） %>
-    <% if index >= 5
-          break
-       end
-    %>
-    <a href="/restaurants/<%= restaurant.id %>" class="list-group-item"><%= restaurant.name %></a>
-    <% index += 1 %>
-  <% end %>
-</div>
+<h2>一番評価の高いお店</h2>
+    <div class="col-sm-6 col-md-4">
+      <div class="thumbnail" >
+        <h4 class="text-center"><span class="label label-info"><%= @max_restaurant.area %></span></h4>
+          <img src=<%= @max_restaurant.image %> class="img-responsive">
+            <div class="caption">
+              <div class="row">
+                <div class="col-md-12 col-xs-12">
+                  <h3><%= @max_restaurant.name %></h3>
+                </div>
+            </div>
+            <p><span class="glyphicon glyphicon-earphone"></span> <%= @max_restaurant.telephone %></p>
+            <span class="testimonials-post">評価：<%= @max %>点</span>
+            <div class="row">
+              <div class="col-md-4">
+                <a href="restaurants/<%= @max_restaurant.id %>/" class="btn active btn-info btn-product"><span class="glyphicon glyphicon-plus"></span> 詳細</a>
+              </div>
+              <div class="col-md-4">
+                <a href="restaurants/<%= @max_restaurant.id %>/edit/" class="btn active btn-warning btn-product"><span class="glyphicon glyphicon-wrench"></span> 編集</a></div>
+              <div class="col-md-4">
+                <a href="restaurants/<%= @max_restaurant.id %>/" data-method="delete" class="btn active btn-danger btn-product"><span class="glyphicon glyphicon-trash"></span> 削除</a></div>
+            </div>
+            <p> </p>
+          </div>
+        </div>
+    </div>
+
